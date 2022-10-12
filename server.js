@@ -16,7 +16,7 @@ app.use(compression());
 app.use(bearerToken());
 
 app.get('/healthcheck', expressAsyncHandler(async (req, res) => {
-	return res.status(200).json({});
+	return res.status(200).json({ environment: process.env.NODE_ENV });
 }));
 
 app.use('/api/v1/user', userRoutes);
