@@ -13,7 +13,7 @@ echo $DEPLOYMENT_GROUP_NAME
 
 if [ "$DEPLOYMENT_GROUP_NAME" == "preview-dwjg-deploy" ]
 then
-	npm run preview
+	DEPLOYMENT_ID="$DEPLOYMENT_ID" DEPLOY_GROUP="$DEPLOYMENT_GROUP_NAME" npm run preview
 else
-	npm run production
+	DEPLOYMENT_ID="$DEPLOYMENT_ID" DEPLOY_GROUP="$DEPLOYMENT_GROUP_NAME" npm run production
 fi
