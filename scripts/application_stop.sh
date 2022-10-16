@@ -1,2 +1,2 @@
 #!/bin/bash
-pkill node
+pm2 stop dwjg-api
