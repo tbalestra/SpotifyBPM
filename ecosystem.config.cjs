@@ -6,7 +6,7 @@ module.exports = {
 			env_production: {
 				NODE_ENV: 'production'
 			},
-			env_development: {
+			env_preview: {
 				NODE_ENV: 'preview'
 			},
 			watch: true
