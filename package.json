@@ -6,8 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"local": "NODE_ENV=local nodemon --watch ./ server.js",
-		"preview": "pm2 start restart ecosystem.config.js --env preview",
-		"production": "pm2 start restart ecosystem.config.js --env production"
+		"preview": "pm2 restart ecosystem.config.js --env preview",
+		"production": "pm2 restart ecosystem.config.js --env production"
 	},
 	"keywords": [],
 	"author": "",
