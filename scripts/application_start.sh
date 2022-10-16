@@ -9,7 +9,7 @@ export NVM_DIR="$HOME/.nvm"
 node -v
 npm install
 
-if [ "$DEPLOYMENT_GROUP_NAME" == "preview" ]; then
+if [ "$DEPLOYMENT_GROUP_NAME" == "preview-dwjg-deploy" ]; then
 	npm run preview
 else
 	npm run production
