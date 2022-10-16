@@ -6,3 +6,4 @@ if [ -d "$DIR" ]; then
 else
 	echo "Creating ${DIR}"
 	mkdir ${DIR}
+fi
