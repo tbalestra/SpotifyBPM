@@ -11,7 +11,7 @@ npm install
 
 echo $DEPLOYMENT_GROUP_NAME
 
-if [ "$DEPLOYMENT_GROUP_NAME" == "preview-dwjg-deploy" ]
+if [ $DEPLOYMENT_GROUP_NAME == "preview-dwjg-deploy" ]
 then
 	DEPLOYMENT_ID="$DEPLOYMENT_ID" DEPLOY_GROUP="$DEPLOYMENT_GROUP_NAME" npm run preview
 else
