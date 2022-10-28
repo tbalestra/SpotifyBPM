@@ -31,6 +31,7 @@ CREATE TABLE `business_hours_override` (
 
 CREATE TABLE `business_wait_time` (
   `business_id` bigint unsigned NOT NULL,
+  `day_of_week` int NOT NULL,
   `wait_time` time NOT NULL,
   `set_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
