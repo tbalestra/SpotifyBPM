@@ -8,6 +8,7 @@ import bearerToken from 'express-bearer-token';
 import expressAsyncHandler from 'express-async-handler';
 
 import userRoutes from './models/user/router.js';
+import businessRoutes from './models/business/router.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get('/healthcheck', expressAsyncHandler(async (req, res) => {
 }));
 
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/business', businessRoutes);
 
 // eslint-disable-next-line no-unused-vars
 app.use(async (err, req, res, _next) => {
