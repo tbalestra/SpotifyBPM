@@ -3,6 +3,6 @@ import * as userService from './models.js';
 
 const router = express.Router();
 
-router.get('/:userId', userService.getUserById);
+router.get('/:userId', userService.routeGetUserById);
 
 export default router;

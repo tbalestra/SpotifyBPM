@@ -1,7 +1,7 @@
 -- Create syntax for TABLE 'business'
 CREATE TABLE `business` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -29,6 +29,7 @@ CREATE TABLE `business_hours_override` (
   CONSTRAINT `Fk_business_hours_override_business` FOREIGN KEY (`business_id`) REFERENCES `business` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Create syntax for TABLE 'business_wait_time'
 CREATE TABLE `business_wait_time` (
   `business_id` bigint unsigned NOT NULL,
   `day_of_week` int NOT NULL,
