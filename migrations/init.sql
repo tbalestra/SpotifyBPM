@@ -4,8 +4,8 @@ CREATE TABLE `session` (
   `user_id` bigint unsigned NOT NULL,
   `ip` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `created` datetime NOT NULL,
-  `last_login` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `last_login_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Fk_session_user` (`user_id`),
   CONSTRAINT `Fk_session_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
