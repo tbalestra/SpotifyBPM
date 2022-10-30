@@ -1,6 +1,8 @@
 import expressAsyncHandler from 'express-async-handler';
-import { convertAttributeValue } from '../../libs/mysql/attributeTypes.js';
+
 import * as userRepository from './queries.js';
+
+import { convertAttributeValue } from '../../libs/mysql/attributeType.js';
 
 export const routeGetUserById = expressAsyncHandler(async (req, res) => {
 	let userId = parseInt(req.params.userId);
