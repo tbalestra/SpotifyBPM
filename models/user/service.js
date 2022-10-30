@@ -2,7 +2,7 @@ import expressAsyncHandler from 'express-async-handler';
 
 import * as userRepository from './repository.js';
 
-import { convertAttributeValue } from '../../libs/mysql/attributeType.model.js';
+import { User } from './models/user.model.js';
 
 export const routeGetUserById = expressAsyncHandler(async (req, res) => {
 	let userId = parseInt(req.params.userId);
@@ -10,13 +10,13 @@ export const routeGetUserById = expressAsyncHandler(async (req, res) => {
 
 	if (!user) return res.status(404).json({});
 
-	return res.json({ user });
+	return res.json({ user: user.toDto() });
 });
 
 /**
  * Get a user by its Id
  * @param {number} userId 
- * @returns {(UserDto | null)} user
+ * @returns {(User | null)}
  */
 const getUserById = async (userId) => {
 	let user = await getUsers([userId]);
@@ -26,7 +26,7 @@ const getUserById = async (userId) => {
 /**
  * Get multiple users by Ids
  * @param {number[]} userIds 
- * @returns {UserDto[]}
+ * @returns {User[]}
  */
 const getUsers = async (userIds) => {
 	let [users, attributes] = await Promise.all([
@@ -34,10 +34,5 @@ const getUsers = async (userIds) => {
 		userRepository.getUsersAttributes(userIds)
 	]);
 
-	return users.map(user => {
-		let userAttributes = attributes.filter(attribute => attribute.user_id == user.id);
-		userAttributes.forEach(attribute => {
-			user[attribute.key] = convertAttributeValue(attribute.type, attribute.value);
-		});
-	});
+	return users.map(user => new User(user, attributes.filter(attribute => attribute.user_id == user.id)));
 };
