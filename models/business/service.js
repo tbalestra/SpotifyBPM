@@ -3,28 +3,39 @@ import { convertAttributeValue } from '../../libs/mysql/attributeTypes.js';
 import * as businessRepository from './queries.js';
 
 export const routeGetBusinessById = expressAsyncHandler(async (req, res) => {
-	let business = await getBusinessById(req.params.businessId);
+	let businessId = parseInt(req.params.businessId);
+	let business = await getBusinessById(businessId);
 
 	if (!business) return res.status(404).json({});
 
 	return res.json({ business });
 });
 
+/**
+ * Get a business by its Id
+ * @param {number} businessId 
+ * @returns {(BusinessDto | null)}
+ */
 const getBusinessById = async (businessId) => {
 	let business = await getBusinesses([businessId]);
 	return business.length ? business[0] : null;
 };
 
+/**
+ * Get multiple businesses by Ids
+ * @param {number[]} businessIds 
+ * @returns {BusinessDto[]}
+ */
 const getBusinesses = async (businessIds) => {
 	let [businesses, attributes] = await Promise.all([
 		businessRepository.getBusinesses(businessIds),
 		businessRepository.getBusinessesAttributes(businessIds)
 	]);
 
-	return businesses.map(user => {
-		let businessAttributes = attributes.filter(attribute => attribute.user_id == user.id);
+	return businesses.map(business => {
+		let businessAttributes = attributes.filter(attribute => attribute.business_id == business.id);
 		businessAttributes.forEach(attribute => {
-			user[attribute.key] = convertAttributeValue(attribute.type, attribute.value);
+			business[attribute.key] = convertAttributeValue(attribute.type, attribute.value);
 		});
 	});
 };

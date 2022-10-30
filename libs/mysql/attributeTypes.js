@@ -1,18 +1,32 @@
-const AttributeTypes = Object.freeze({
+/**
+ * @typedef {number} AttributeType
+ */
+
+/**
+ * @readonly
+ * @enum {AttributeType}
+ */
+const AttributeType = Object.freeze({
 	Text: 0,
 	Json: 1,
 	Date: 2
 });
 
+/**
+ * 
+ * @param {AttributeType} type 
+ * @param {string} value 
+ * @returns 
+ */
 export const convertAttributeValue = (type, value) => {
 	switch(type) {
-	case AttributeTypes.Text:
+	case AttributeType.Text:
 		return value;
-	case AttributeTypes.Json:
+	case AttributeType.Json:
 		return JSON.parse(value);
-	case AttributeTypes.Date:
+	case AttributeType.Date:
 		return new Date(value);
 	}
 };
 
-export default AttributeTypes;
+export default AttributeType;
