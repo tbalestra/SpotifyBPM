@@ -2,7 +2,7 @@ import expressAsyncHandler from 'express-async-handler';
 
 import * as businessRepository from './repository.js';
 
-import { convertAttributeValue } from '../../libs/mysql/attributeType.model.js';
+import { Business } from './models/business.model.js';
 
 export const routeGetBusinessById = expressAsyncHandler(async (req, res) => {
 	let businessId = parseInt(req.params.businessId);
@@ -10,13 +10,13 @@ export const routeGetBusinessById = expressAsyncHandler(async (req, res) => {
 
 	if (!business) return res.status(404).json({});
 
-	return res.json({ business });
+	return res.json({ business: business.toDto() });
 });
 
 /**
  * Get a business by its Id
  * @param {number} businessId 
- * @returns {(BusinessDto | null)}
+ * @returns {(Business | null)}
  */
 const getBusinessById = async (businessId) => {
 	let business = await getBusinesses([businessId]);
@@ -26,7 +26,7 @@ const getBusinessById = async (businessId) => {
 /**
  * Get multiple businesses by Ids
  * @param {number[]} businessIds 
- * @returns {BusinessDto[]}
+ * @returns {Business[]}
  */
 const getBusinesses = async (businessIds) => {
 	let [businesses, attributes] = await Promise.all([
@@ -34,10 +34,5 @@ const getBusinesses = async (businessIds) => {
 		businessRepository.getBusinessesAttributes(businessIds)
 	]);
 
-	return businesses.map(business => {
-		let businessAttributes = attributes.filter(attribute => attribute.business_id == business.id);
-		businessAttributes.forEach(attribute => {
-			business[attribute.key] = convertAttributeValue(attribute.type, attribute.value);
-		});
-	});
+	return businesses.map(business => new Business(business, attributes.filter(attribute => attribute.business_id == business.id)));
 };
