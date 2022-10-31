@@ -1,13 +1,13 @@
 import { convertAttributeValue } from '../../../libs/mysql/attributeType.model.js';
 
 /**
-* @typedef {Object} BusinessDto
+* @typedef {object} BusinessDto
 * @property {number} id
 * @property {string} name
 */
 
 /**
- * @typedef {Object} Business
+ * @typedef {object} Business
  * @property {number} id
  * @property {string} name
  * @property {Date} created_at
@@ -40,7 +40,7 @@ export class Business {
 
 /**
  * 
- * @typedef {Object} DbBusiness
+ * @typedef {object} DbBusiness
  * @property {number} id
  * @property {string} name
  * @property {Date} created_at
@@ -49,7 +49,7 @@ export class Business {
 
 /**
  * 
- * @typedef {Object} DbBusinessAttribute
+ * @typedef {object} DbBusinessAttribute
  * @property {number} business_id
  * @property {string} key
  * @property {string} value

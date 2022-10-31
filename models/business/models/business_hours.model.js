@@ -1,5 +1,5 @@
 /**
- * @typedef {Object} DbBusinessHours
+ * @typedef {object} DbBusinessHours
  * @property {number} business_id
  * @property {number} day_of_week
  * @property {(Date | null)} open
@@ -7,7 +7,7 @@
  */
 
 /**
- * @typedef {Object} DbBusinessHoursOverride
+ * @typedef {object} DbBusinessHoursOverride
  * @property {number} business_id
  * @property {Date} start_range
  * @property {(Date | null)} end_range
@@ -17,7 +17,7 @@
  */
 
 /**
- * @typedef {Object} DbBusinessWaitTime
+ * @typedef {object} DbBusinessWaitTime
  * @property {number} business_id
  * @property {number} day_of_week
  * @property {Date} wait_time

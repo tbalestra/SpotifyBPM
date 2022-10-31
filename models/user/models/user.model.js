@@ -1,14 +1,14 @@
 import { convertAttributeValue } from '../../../libs/mysql/attributeType.model.js';
 
 /**
- * @typedef {Object} UserDto
+ * @typedef {object} UserDto
  * @property {number} id
  * @property {string} firstName
  * @property {string} lastName
  */
 
 /**
- * @typedef {Object} User
+ * @typedef {object} User
  * @property {number} id
  * @property {string} firstName
  * @property {string} lastName
@@ -44,7 +44,7 @@ export class User {
 
 /**
  * 
- * @typedef {Object} DbUser
+ * @typedef {object} DbUser
  * @property {number} id
  * @property {string} first_name
  * @property {string} last_name
@@ -55,10 +55,12 @@ export class User {
 
 /**
  * 
- * @typedef {Object} DbUserAttribute
+ * @typedef {object} DbUserAttribute
  * @property {number} user_id
  * @property {string} key
  * @property {string} value
  * @property {number} type
  * @property {Date} updated_at 
  */
+
+// RESPONSES
