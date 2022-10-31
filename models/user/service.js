@@ -14,7 +14,7 @@ export const routeGetUserById = expressAsyncHandler(async (req, res) => {
 });
 
 /**
- * Get a user by its Id
+ * Fetch a user by its Id
  * @param {number} userId 
  * @returns {(User | null)}
  */
@@ -24,7 +24,7 @@ const getUserById = async (userId) => {
 };
 
 /**
- * Get multiple users by Ids
+ * Fetch multiple users by Ids
  * @param {number[]} userIds 
  * @returns {User[]}
  */

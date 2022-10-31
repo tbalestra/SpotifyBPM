@@ -12,3 +12,20 @@
  * @typedef {Object} SessionPayload
  * @property {number} id
  */
+
+/**
+ * @typedef {number} LoginMethod
+ */
+
+/**
+ * @readonly
+ * @enum {LoginMethod}
+ */
+const LoginMethod = Object.freeze({
+	Phone: 0,
+	Apple: 1,
+	Google: 2,
+	Email: 3
+});
+
+export default LoginMethod;

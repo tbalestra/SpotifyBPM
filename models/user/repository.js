@@ -1,14 +1,14 @@
 import mysql from '../../libs/mysql/index.js';
 
 /**
- * Get the base information of a user
+ * Fetch the base information of a user
  * @param {number[]} userIds 
  * @returns {DbUser[]}
  */
 export const getUsers = async (userIds) => await mysql.awaitQuery('SELECT * FROM user WHERE id IN ?', [userIds]);
 
 /**
- * Get the attributes of a user
+ * Fetch the attributes of a user
  * @param {number[]} userIds 
  * @returns {DbUserAttribute[]}
  */

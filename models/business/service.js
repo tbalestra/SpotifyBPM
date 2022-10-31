@@ -14,7 +14,7 @@ export const routeGetBusinessById = expressAsyncHandler(async (req, res) => {
 });
 
 /**
- * Get a business by its Id
+ * Fetch a business by its Id
  * @param {number} businessId 
  * @returns {(Business | null)}
  */
@@ -24,7 +24,7 @@ const getBusinessById = async (businessId) => {
 };
 
 /**
- * Get multiple businesses by Ids
+ * Fetch multiple businesses by Ids
  * @param {number[]} businessIds 
  * @returns {Business[]}
  */
