@@ -6,6 +6,7 @@ import express from 'express';
 import compression from 'compression';
 import bearerToken from 'express-bearer-token';
 import expressAsyncHandler from 'express-async-handler';
+import morgan from 'morgan';
 
 import userRoutes from './models/user/router.js';
 import businessRoutes from './models/business/router.js';
@@ -20,6 +21,25 @@ const start = async () => {
 	app.use(express.json({ limit: '50mb' }));
 	app.use(compression());
 	app.use(bearerToken());
+	app.use(morgan(
+		function (tokens, req, res) {
+			return JSON.stringify({
+				method: tokens.method(req, res),
+				url: tokens.url(req, res),
+				status: Number.parseFloat(tokens.status(req, res)),
+				content_length: tokens.res(req, res, 'content-length'),
+				response_time: Number.parseFloat(tokens['response-time'](req, res)),
+			});
+		},
+		{
+			stream: {
+			// Configure Morgan to use our custom logger with the http severity
+				write: (message) => {
+					logger.info(message);
+				},
+			},
+		}
+	));
 
 	app.get('/healthcheck', expressAsyncHandler(async (req, res) => {
 		return res.status(200).json({ environment: process.env.NODE_ENV, deployGroup: process.env.DEPLOY_GROUP, deployId: process.env.DEPLOYMENT_ID });
