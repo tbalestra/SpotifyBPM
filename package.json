@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"local": "NODE_ENV=local nodemon --watch ./ server.js",
-		"preview": "pm2 restart ecosystem.config.cjs --env preview",
+		"preview:stop": "pm2 stop dwjg-api",
+		"preview:start": "pm2 restart ecosystem.config.cjs --env preview",
 		"production": "pm2 restart ecosystem.config.cjs --env production"
 	},
 	"keywords": [],
