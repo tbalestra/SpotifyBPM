@@ -33,7 +33,7 @@ const start = async () => {
 		},
 		{
 			stream: {
-			// Configure Morgan to use our custom logger with the http severity
+				// Configure Morgan to use our custom logger with the http severity
 				write: (message) => {
 					logger.info(message);
 				},
