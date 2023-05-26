@@ -41,6 +41,10 @@ const start = async () => {
 		}
 	));
 
+	app.get('/', expressAsyncHandler(async (req, res) => {
+		return res.status(200).json({ environment: process.env.NODE_ENV, deployGroup: process.env.DEPLOY_GROUP, deployId: process.env.DEPLOYMENT_ID });
+	}));
+
 	app.get('/healthcheck', expressAsyncHandler(async (req, res) => {
 		return res.status(200).json({ environment: process.env.NODE_ENV, deployGroup: process.env.DEPLOY_GROUP, deployId: process.env.DEPLOYMENT_ID });
 	}));
